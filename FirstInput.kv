@@ -1,0 +1,31 @@
+#:import hex kivy.utils.get_color_from_hex
+#:import ZBarCam kivy_garden.zbarcam.ZBarCam
+#:import ZBarSymbol pyzbar.pyzbar.ZBarSymbol
+<FirstInput>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+            size_hint: 1, .4
+            Image:
+
+                size_hint: .8, .8
+                source: 'Crypto.png'
+
+        AnchorLayout:
+            size_hint: 1, .4
+            anchor_x: 'center'
+            anchor_y: 'top' 
+            Image:
+
+                size_hint: .7, .7
+                source: 'logo.png'
+        Widget:
+            size_hint: 1, .1

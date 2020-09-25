@@ -1,0 +1,78 @@
+#:import hex kivy.utils.get_color_from_hex
+<Mnemonic>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation : 'vertical'
+        padding : 25, 0, 25, 0
+        Widget:
+            size_hint : 1, .25 
+        BoxLayout:
+            size_hint: .9, .1
+            pos_hint: {'center_x': .5} 
+            canvas.before:
+                Color:
+                    rgb: hex('#740F75')
+                    a: .27
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: {20}    
+            TextInput:
+                id: mnemonictext
+                background_color: .7, .2, .7, 0
+                foreground_color: 1, 1, 1, 1
+                font_size: 25
+                minimum_height: 
+                padding: 7, 4, 7, 4
+                cursor_color: 1, 1, 1, 1
+
+
+        BoxLayout:
+            size_hint : 1, .1
+            orientation: 'vertical'
+            Label:
+                id: stat
+                pos_hint: {'center_y': .8}
+                font_size : 20
+                text: "Введите мнемофразу через пробел"
+        Widget:
+            size_hint: 1, .1
+        BoxLayout:
+            size_hint: .7, .1
+            canvas:
+                Color:
+                    rgba: .10, 10, .10, 0  
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            pos_hint: {'center_x': .5}                    
+            MnemonicButton:
+                font_size : 20
+                text: "Войти"
+                on_release: root.reg()
+                
+        Widget:
+            size_hint: 1, .35
+
+        
+        
+<MnemonicButton@Button>:
+    background_color: 1, 1, 1, 0
+    font: "Leelawadee UI"
+    canvas.before:
+        Color:
+            rgb: hex('#740F75')
+            a: .65
+           # rgb: hex('#542881')
+           # v: .40
+           # s: .60
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: {20}

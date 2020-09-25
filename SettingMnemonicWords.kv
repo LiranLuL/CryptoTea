@@ -1,0 +1,222 @@
+<SettingMnemonicWords>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        spacing: 7
+        orientation: "vertical"
+        padding: 0, 0, 0, 10
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .7, .2, .7, .4   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "horizontal"
+            Backs:
+                size_hint: .1, 1
+                on_release: root.manager.current = 'Security'
+                Image:
+                    size: self.parent.size
+                    stretch: True
+                    y: self.parent.y + self.parent.height/2 - self.height/2
+                    x: self.parent.x + self.parent.width/2 - self.width/2
+                    source: 'back.png'
+
+                
+            BoxLayout:
+                size_hint: .9, 1
+                padding: 0, 0, 15, 0
+                Label:
+                    font_size: 20
+                    text: 'Мнемофраза'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 7, 0, 7, 0
+            size_hint: 1, .93
+            spacing: 10
+            BoxLayout:
+                size_hint: 1, .1
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 15
+                orientation: "horizontal"
+                BackLabelone:
+                    id: a
+                    text: ''
+                BackLabeltwo:
+                    id: b
+                    text: ''
+
+            BoxLayout:
+                size_hint: .6, .1
+                pos_hint: {'right': .7}
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabelthree:
+                    id: c
+                    text: ''
+
+            BoxLayout:
+                size_hint: 1, .1
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabelone:
+                    size_hint: .6, 1
+                    id: d
+                    text: ''
+                BackLabeltwo:
+                    size_hint: .4, 1
+                    id: e
+                    text: ''
+                
+            BoxLayout:
+                size_hint: .7, .1
+                pos_hint: {'right': 1}
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabelthree:
+                    id: f
+                    text: ''       
+            
+            
+            BoxLayout:
+                size_hint: 1, .1
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabelthree:
+                    id: g
+                    text: ''
+                BackLabelone:
+                    id: h
+                    text: ''
+                BackLabeltwo:
+                    id: i
+                    text: ''
+            BoxLayout:
+                size_hint: .6, .1
+                pos_hint: {'left': 1}
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabeltwo:
+                    id: j
+                    text: ''
+
+            BoxLayout:
+                size_hint: .8, .1
+                pos_hint: {'right': .8}
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabelthree:
+                    id: k
+                    text: ''
+            BoxLayout:
+                size_hint: .6, .1
+                pos_hint: {'right': 1}
+                canvas:
+                    Color:
+                        rgba: .10, .10, .10, 1   
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                spacing: 7
+                orientation: "horizontal"
+                BackLabelone:
+                    id: l
+                    text: ''
+
+
+<BackLabelone@Label>:
+    background_normal : ''
+    font: "Leelawadee UI"
+    font_size: 22
+    canvas.before: 
+        Color:
+            rgba: .55, .14, .56, 1
+        RoundedRectangle:
+            pos: self.pos             
+            size: self.size             
+            radius: [15] 
+
+<BackLabeltwo@Label>:
+    background_normal : ''
+    font: "Leelawadee UI"
+    font_size: 22
+    canvas.before: 
+        Color:
+            rgba: .94, .17, .95, .255
+
+        RoundedRectangle:
+            pos: self.pos             
+            size: self.size             
+            radius: [15] 
+
+<BackLabelthree@Label>:
+    background_normal : 
+    font: "Leelawadee UI"
+    font_size: 22
+    canvas.before: 
+        Color:
+            rgba: .66, .16, .67, .255
+
+        RoundedRectangle:
+            pos: self.pos             
+            size: self.size             
+            radius: [15] 
+
+
+<Backs@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0) if self.state=='normal' else (.7, .2, .7, .122 )  
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+

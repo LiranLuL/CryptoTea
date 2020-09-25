@@ -1,0 +1,80 @@
+<RegistrationOrSign>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation : 'vertical'
+
+        Widget:
+            size_hint : 1, .5
+            Image:
+                source: 'Crypto.png'
+                size: self.parent.size
+                stretch: True
+                y: self.parent.y + self.parent.height/2 - self.height/2
+                x: self.parent.x + self.parent.width/2 - self.width/2
+
+        BoxLayout:
+            size_hint: .6, .1
+            pos_hint: {'center_x': .5} 
+            canvas:
+                Color:
+                    rgba: .10, 10, .10, 0   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            MyButtonRegistr:
+                font_size : 18
+                text: "У меня уже есть аккаунт"
+                on_release: root.manager.current = 'PrivateOrMnemonic'
+
+        BoxLayout:
+            size_hint : 1, .1
+            padding : 0, 25, 0, 25
+            Label:
+                pos_hint: {'center_y': .8}
+                font_size : 20
+                text: "или"
+        
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: .10, 10, .10, 0  
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            size_hint: .5, .08
+            pos_hint: {'center_x': .5}                  
+            MyButtonRegistr:
+                font_size : dp(20)
+                text: "Создать аккаунт"
+                on_release: root.manager.current = 'MnemonicWords'
+                
+        Widget:
+            size_hint: 1, .2
+
+        BoxLayout:
+            padding : 0, 25, 0, 0
+            size_hint : 1, .1
+            Label:
+                pos_hint: {'center_y': .8}
+                font_size : 15
+                text: "CC Licensed 2020 | About us"
+
+        
+        
+<MyButtonRegistr@Button>:
+    background_color: 1, 1, 1, 0
+    font: "Leelawadee UI"
+    
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, .255) if self.state=='normal' else (.7, .2, .7, .255 )  
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: {20}
