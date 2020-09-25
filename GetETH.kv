@@ -1,0 +1,91 @@
+<GetETH>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+        padding: 0, 0, 0, 10
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .7, .2, .7, .4   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "horizontal"
+            Backs:
+                size_hint: .1, 1
+                on_release: root.manager.current = 'HomeScreen'
+                Image:
+                    size: self.parent.size
+                    stretch: True
+                    y: self.parent.y + self.parent.height/2 - self.height/2
+                    x: self.parent.x + self.parent.width/2 - self.width/2
+                    source: 'back.png'
+
+            BoxLayout:
+                size_hint: .9, 1
+                padding: 0, 0, 15, 0
+                Label:
+                    font_size: 20
+                    text: ''
+
+        Widget:
+            size_hint: 1, .1
+
+        BoxLayout:
+            size_hint: .8, .3
+            pos_hint: {'center_x': .5} 
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 0  
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Image:
+                source: 'qr.jpg'
+                size: self.parent.size
+                stretch: True
+                y: self.parent.y + self.parent.height/2 - self.height/2
+                x: self.parent.x + self.parent.width/2 - self.width/2
+        Label:
+            size_hint: .8, .1
+            pos_hint: {'center_x': .5} 
+            id: publicget
+            text:''
+
+
+
+        Widget:
+            size_hint: 1, .23
+ 
+
+
+<DONT@Label>:
+    text_size: root.width, None
+    background_normal : ''
+    font: "Leelawadee UI"
+    font_size: 25
+    canvas.before: 
+        Color:
+            rgba: .55, .14, .56, 0
+
+        RoundedRectangle:
+            pos: self.pos             
+            size: self.size             
+            radius: [15] 
+
+
+
+<Backs@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0) if self.state=='normal' else (.7, .2, .7, .122 )  
+        Rectangle:
+            pos: self.pos
+            size: self.size

@@ -1,0 +1,232 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation : 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, .83
+            canvas.before:
+                Rectangle:
+                    source: 'home.png'        
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                padding: 0, 15, 10, 0
+                size_hint: 1, .2       
+                AnchorLayout:
+                    anchor_x:'right'
+                    anchor_y:'top'
+                    ButtonSetting:
+                        size_hint: .1, .5
+                        on_release: root.manager.current = 'Parameters'
+                        Image:
+                            size: self.parent.size
+                            stretch: True
+                            y: self.parent.y + self.parent.height/2 - self.height/2
+                            x: self.parent.x + self.parent.width/2 - self.width/2
+                            source: 'setting.png'
+
+            AnchorLayout:
+                size_hint: 1, .4
+                anchor_x:'center'
+                anchor_y:'center'
+                BoxLayout:
+                    orientation: 'vertical'   
+                    spacing: 10
+                    Image:
+                        size: self.parent.size
+                        stretch: True
+                        y: self.parent.y + self.parent.height/2 - self.height/2
+                        x: self.parent.x + self.parent.width/2 - self.width/2
+                        source: 'user.png'
+                    Label:
+                        size_hint: 1, .1
+                        font_size: 20
+                        text: 'User Name'
+                    Label:
+                        id: public
+                        font_size: 17
+                        size_hint: 1, .1
+                        text: ''
+
+            BoxLayout:
+                size_hint: 1, .3
+                orientation: 'vertical'
+                LabelBalance:
+                    text_size: self.size
+                    halign: "center"
+                    id: ETH
+                    text: '0.000000000'
+                LabelBalance:
+                    text_size: self.size
+                    halign: "center"
+                    id: USD
+                    text: '0.00'
+            Widget:
+                size_hint: 1, .1
+
+
+        BoxLayout:
+            size_hint: 1, .1
+            padding: 0, 10, 0, 0
+            canvas:
+                Color:
+                    rgba: .10, .10, .10, 1   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            size_hint: 1, .95
+            spacing: 10
+            orientation : 'vertical'
+            BoxLayout:
+                size_hint: 1, .3
+                padding: 50, 10, 50, 0
+                Buttonfuction:
+                    text: "Получить"
+                    on_release: root.manager.current = 'GetETH'
+            BoxLayout:
+                size_hint: 1, .7
+                padding: 20, 35, 20, 50
+                Buttonfuction:
+                    on_release: root.manager.current = 'SendETH'
+                    text: "Отправить"
+    
+
+    
+    
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .10, .10, .10, 1   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'bottom'
+                Button:
+                    background_color: 1, 1, 1, 0
+                    font_size: 50
+                    font: "Leelawadee UI"
+                    on_release: root.up_history(self)
+                    Image:
+                        source: 'ClickDown.png'
+                        size: self.parent.size
+                        stretch: True
+                        y: self.parent.y + self.parent.height/2 - self.height/2
+                        x: self.parent.x + self.parent.width/2 - self.width/2
+        
+    BoxLayout:
+        size_hint: 1, .7
+        y: root.homeScreenWidget_pos_y 
+        id: HomeScreenWidget
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: .104, .10, .10, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+            size_hint: 1, 25/self.parent.height
+            size: self.parent.width, 25
+            ButtonClick:
+                canvas.before:
+                    Color:
+                        rgba: .104, .10, .10, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: 49, 25
+                size: 49, 25
+                size_hint: (None, None)
+                on_release: root.down_history(self)
+                Image:
+                    source: 'ClickUp.png'
+                    size: self.parent.size
+                    pos: self.parent.pos
+                    stretch: True
+
+                
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: .104, .10, .10, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            size_hint: (1, (self.parent.height - 25)/self.parent.height)
+            size: self.parent.width, self.parent.height *.7 - 25
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                size_hint: 1, 1
+                size: self.parent.width, self.parent.height
+                
+                GridLayout:
+                    height: self.minimum_height
+                    cols: 1
+                    padding: 12
+                    spacing: 10
+                    size_hint: 1, None
+                    id: history
+
+
+
+
+                
+
+
+<ButtonSetting@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 4) if self.state=='normal' else (.7, .2, .7, .122 )  
+
+<Buttonfuction@Button>:
+    size: self.size
+    background_color: .7, .2, .7, 0
+    font_size : 35
+    font: "Leelawadee UI"
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, .4 ) if self.state=='normal' else (.7, .2, .7, .122 )  
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+
+<LabelBalance@Label>:
+    background_normal : 
+    font: "Leelawadee UI"
+    font_size: 20
+
+<ItemTranz@Button>:
+    size_hint: (1, None)
+#    size: self.parent.width, 126
+    background_color: 1, 1, 1, 0
+    font_size: 20
+    canvas.before:
+        Color:
+            #rgb: .364, .078, .37, 1
+            rgba: (.364, .078, .37, 1) if self.state=='normal' else (.364, .078, .37, .8)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20, ]
+
+<ButtonClick@Button>:
+    background_color: .10, .10, .10, 0
+    font_size : 50
+    font: "Leelawadee UI"
+    #canvas.before:        
+    #    Color:             
+    #        rgba: (.10, .10, .10, 1 ) if self.state=='normal' else (.07, .07, .07, 1 )  
+    #    RoundedRectangle:
+    #        pos: (self.parent.y/2 - 38, 435 - 26)            
+    #        size: 50, 26
+    #        radius: [0, 0, 10, 10]
+
+

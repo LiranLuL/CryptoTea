@@ -1,0 +1,108 @@
+<Security>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        spacing: 7
+        orientation: "vertical"
+        padding: 0, 0, 0, 10
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .7, .2, .7, .4   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "horizontal"
+            Backs:
+                size_hint: .1, 1
+                on_release: root.manager.current = 'Parameters'
+                Image:
+                    size: self.parent.size
+                    stretch: True
+                    y: self.parent.y + self.parent.height/2 - self.height/2
+                    x: self.parent.x + self.parent.width/2 - self.width/2
+                    source: 'back.png'
+
+            BoxLayout:
+                size_hint: .9, 1
+                padding: 0, 0, 15, 0
+                Label:
+                    font_size: 20
+                    text: 'Безопасность'
+
+        Widget:
+            size_hint: 1, .2
+
+        BoxLayout:
+            spacing: 20
+            size_hint: 1, .5
+            orientation: 'vertical'
+            ButtonSecurity:
+                size_hint: .8, 1
+                pos_hint: {'center_x': .5}
+                text: 'Мнемофраза'
+                on_release: root.manager.current = 'PasswordConfirmation'
+            ButtonSecurity:
+                size_hint: .8, 1
+                pos_hint: {'center_x': .5}
+                text: 'Смена пароля'
+                on_release: root.manager.current = 'PasswordConfirmationTwo'
+            ButtonSecurity:
+                size_hint: .8, 1
+                pos_hint: {'center_x': .5}
+                text: 'Приватный ключ'
+                on_release: root.anim_security(self)
+
+        Widget:
+            size_hint: 1, .23
+
+    #выезжающее окно
+    AnchorLayout:
+        anchor_x:'center'
+        anchor_y: 'center'
+        x: root.SecurityWidget_pos_x
+        id: SecurityWidget
+        BoxLayout:
+            size_hint: .95, .09
+            orientation: 'vertical'
+            canvas.before:
+                Color:
+                    rgba: .66, .16, .67, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]
+            Label:
+                text: '0x2c93795ABD1eC45FEde63B1E171A2eB36b4d1348'
+                text_size: self.size
+                font: "Leelawadee UI"
+                font_size: 15
+                padding_x: 5
+                shorten_from: 'right'
+                
+<Backs@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0) if self.state=='normal' else (.7, .2, .7, .122 )  
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<ButtonSecurity@Button>:
+    size: self.size
+    background_color: .7, .2, .7, 0
+    font_size : 25
+    font: "Leelawadee UI"
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, .4 ) if self.state=='normal' else (.7, .2, .7, .122 )  
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: {20}

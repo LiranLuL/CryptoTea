@@ -1,0 +1,164 @@
+<SendETH>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation : 'vertical'
+
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .7, .2, .7, .4   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "horizontal"
+            Backs:
+                size_hint: .1, 1
+                on_release: root.manager.current = 'HomeScreen'
+                Image:
+                    size: self.parent.size
+                    stretch: True
+                    y: self.parent.y + self.parent.height/2 - self.height/2
+                    x: self.parent.x + self.parent.width/2 - self.width/2
+                    source: 'back.png'
+
+                
+            BoxLayout:
+                size_hint: .9, 1
+                padding: 0, 0, 15, 0
+                Label:
+                    font_size: 20
+                    text: ''
+
+        BoxLayout:
+            size_hint: 1, .1   
+            padding: 0, 10, 0, 0
+            AnchorLayout:
+                anchor_x:'center'
+                anchor_y:'top'
+                ButtonScan:
+                    size_hint: .1, .5
+                    on_release: root.activate(zbarcam)
+                    Image:
+                        source: 'scaner.png'
+                        size: self.parent.size
+                        stretch: True
+                        y: self.parent.y + self.parent.height/2 - self.height/2
+                        x: self.parent.x + self.parent.width/2 - self.width/2
+            
+        BoxLayout:
+            size_hint: .6, .1
+            orientation: 'vertical'
+            Label:
+                pos_hint: {'left': 1}
+                font_size : 20
+                text: "Кому:"            
+        BoxLayout:
+            size_hint: .9, .1
+            pos_hint: {'center_x': .5} 
+            canvas.before:
+                Color:
+                    rgb: hex('#740F75')
+                    a: .27
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: {20}    
+            TextInput:
+                id: getter
+                background_color: .7, .2, .7, 0
+                foreground_color: 1, 1, 1, 1
+                font_size: 25
+                minimum_height: 
+                padding: 7, 4, 7, 4
+                cursor_color: 1, 1, 1, 1
+
+
+        BoxLayout:
+            size_hint: .6, .1
+            orientation: 'vertical'
+            Label:
+                pos_hint: {'left': 1}
+                font_size : 20
+                text: "Сколько:"            
+        BoxLayout:
+            size_hint: .9, .1
+            pos_hint: {'center_x': .5} 
+            canvas.before:
+                Color:
+                    rgb: hex('#740F75')
+                    a: .27
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: {20}    
+            TextInput:
+                id: much
+                background_color: .7, .2, .7, 0
+                foreground_color: 1, 1, 1, 1
+                font_size: 25
+                minimum_height: 
+                padding: 7, 4, 7, 4
+                cursor_color: 1, 1, 1, 1
+
+
+        Widget:
+            size_hint: 1, .05
+        BoxLayout:
+            size_hint: .7, .1
+            canvas:
+                Color:
+                    rgba: .10, 10, .10, 0  
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            pos_hint: {'center_x': .5}                    
+            MyButton:
+                font_size : 20
+                text: "Отправить"
+                on_release: root.verification(self)
+                
+        Widget:
+            size_hint: 1, .075
+
+        
+        
+<MyButton@Button>:
+    background_color: 1, 1, 1, 0
+    font: "Leelawadee UI"
+    canvas.before:
+        Color:
+            rgb: hex('#740F75')
+            a: .65
+           # rgb: hex('#542881')
+           # v: .40
+           # s: .60
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: {20}
+
+<Backs@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0) if self.state=='normal' else (.7, .2, .7, .122 )  
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<ButtonScan@Button>:
+    size: self.size
+    background_color: .7, .2, .7, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0 ) if self.state=='normal' else (.7, .2, .7, 0 )  
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size

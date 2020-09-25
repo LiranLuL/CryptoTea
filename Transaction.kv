@@ -1,0 +1,78 @@
+<Transaction>:
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation: "vertical"
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .7, .2, .7, .4   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "horizontal"
+            Backs:
+                size_hint: .1, 1
+                on_release: root.manager.current = 'HomeScreen'
+                Image:
+                    size: self.parent.size
+                    stretch: True
+                    y: self.parent.y + self.parent.height/2 - self.height/2
+                    x: self.parent.x + self.parent.width/2 - self.width/2
+                    source: 'back.png'
+            BoxLayout:
+                size_hint: .9, 1
+                padding: 0, 0, 15, 0
+                Label:
+                    id: date
+                    font_size : self.parent.height/1.8
+                    text: '2020-08-06 09:16:51'
+                    
+        BoxLayout:
+            size_hint: 1, .4
+            orientation: 'vertical'
+            spacing: 3
+            padding: 3, 0, 0, 0
+            TransLabel:
+                id: sender
+                text: 'Отправитель: 0x97f76a447318...3eba79'
+            TransLabel:
+                id: getter
+                text: 'Получатель: 0x2a52d69bf624...62c140'
+            TransLabel:
+                id: how_many
+                text: '0'
+            TransLabel:
+                id: comission
+                text: '0'
+            TransLabel:
+                id: all_eth
+                text: 'Всего: 0'
+
+        Widget:
+            size_hint: 1, .53
+
+
+<Backs@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0) if self.state=='normal' else (.7, .2, .7, .122 )  
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<TransLabel@Label>:
+    font_size : self.height/2.3
+    text_size: self.size
+    halign: 'left'
+
+
+
+
+    #font_size : self.width/len(self.text)

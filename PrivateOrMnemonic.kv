@@ -1,0 +1,98 @@
+<PrivateOrMnemonic>:
+    BoxLayout:
+        spacing: 10
+        orientation : 'vertical'
+        canvas:
+            Color:
+                rgba: .10, .10, .10, 1   
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+
+
+        BoxLayout:
+            size_hint: 1, .07
+            canvas:
+                Color:
+                    rgba: .7, .2, .7, .4   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            orientation: "horizontal"
+            Backs:
+                size_hint: .1, 1
+                on_release: root.manager.current = 'RegistrationOrSign'
+                Image:
+                    size: self.parent.size
+                    stretch: True
+                    y: self.parent.y + self.parent.height/2 - self.height/2
+                    x: self.parent.x + self.parent.width/2 - self.width/2
+                    source: 'back.png'
+
+            
+                
+            BoxLayout:
+                size_hint: .9, 1
+                padding: 0, 0, 15, 0
+                Label:
+                    font_size: 20
+                    text: ''
+        Widget:
+            size_hint : 1, .33
+
+        BoxLayout:
+            size_hint: .6, .1
+            pos_hint: {'center_x': .5} 
+            canvas:
+                Color:
+                    rgba: .10, 10, .10, 0   
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Choice:
+                font_size : 25
+                text: "Приватный ключ"
+                on_release: root.manager.current = 'PrivateKey'
+
+
+
+
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: .10, 10, .10, 0  
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            size_hint: .6, .1
+            pos_hint: {'center_x': .5}  
+            Choice:
+                font_size : 25
+                text: "Мнемофраза"
+                on_release: root.manager.current = 'Mnemonic'
+        Widget:
+            size_hint: 1, .4
+
+
+<Choice@Button>:
+    background_color: 1, 1, 1, 0
+    font: "Leelawadee UI"
+    
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, .255) if self.state=='normal' else (.7, .2, .7, .122 )  
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: {20}
+
+
+<Backs@Button>:
+    background_color: 1, 1, 1, 0
+    canvas.before:
+        Color:
+            rgba: (.7, .2, .7, 0) if self.state=='normal' else (.7, .2, .7, .122 )  
+        Rectangle:
+            pos: self.pos
+            size: self.size
